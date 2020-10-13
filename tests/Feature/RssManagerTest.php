@@ -90,6 +90,6 @@ class RssManagerTest extends TestCase
             'url' => $faker->url()
         ]);
 
-        $response->assertStatus(200);
+        $response->assertRedirect('/rss-manager');
     }
 }
