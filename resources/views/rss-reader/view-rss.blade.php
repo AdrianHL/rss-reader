@@ -11,6 +11,7 @@
                         <p>No RSS Content based on URL provided!</p>
                         Please verify URL: <a href="{{ $rss->url }}" target="_blank">{{ $rss->url }}</a>
                     @else
+                        @include('rss-reader.rss-content', ['content' => $rssContent]) 
                     @endif
                 </div>
             </div>
