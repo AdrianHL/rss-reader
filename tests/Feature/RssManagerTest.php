@@ -37,6 +37,6 @@ class RssManagerTest extends TestCase
 
         $response->assertStatus(200);
 
-        $response->assertSee('My RSS');
+        $response->assertSee('My RSS Index');
     }
 }

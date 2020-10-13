@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 class RssManagerController extends Controller
 {
-    
     /**
      * Show the RSS Reader dashboard.
      *

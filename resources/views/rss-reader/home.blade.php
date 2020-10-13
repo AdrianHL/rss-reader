@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">My RSS</div>
+                <div class="card-header">My RSS Index</div>
                 <div class="card-body">
                     RSS 1
                 </div>
