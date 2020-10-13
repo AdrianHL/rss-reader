@@ -15,4 +15,14 @@ class RssManagerController extends Controller
     {
         return view('rss-reader.home');
     }
+ 
+    /**
+     * Show the Add RSS Form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function add()
+    {
+        return view('rss-reader.add-rss');
+    }
 }

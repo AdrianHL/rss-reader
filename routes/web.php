@@ -22,4 +22,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/rss-manager', 'RssManagerController@index')->name('rss-manager-home');
+    Route::get('/add-rss', 'RssManagerController@add')->name('add-rss');
+    Route::post('/add-rss', 'RssManagerController@post')->name('add-rss-action');
 });

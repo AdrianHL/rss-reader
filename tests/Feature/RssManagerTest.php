@@ -14,7 +14,7 @@ class RssManagerTest extends TestCase
      * @return void
      * @test
      */
-    public function cannotAccessRssManagerIfNotLoggedIn()
+    public function cannotAccessRssManagerIfNotAuthenticated()
     {
         $response = $this->get('/rss-manager');
 
@@ -27,7 +27,7 @@ class RssManagerTest extends TestCase
      * @return void
      * @test
      */
-    public function canAccessRssManagerIfNotLoggedIn()
+    public function canAccessRssManagerIfNotAuthenticated()
     {
         $user = factory(User::class)->create([
             'password' => bcrypt($password = 'rss-reader-lover'),
@@ -38,5 +38,54 @@ class RssManagerTest extends TestCase
         $response->assertStatus(200);
 
         $response->assertSee('My RSS Index');
+    }
+
+    /**
+     * Add Rss Page (Not Authenticated)
+     *
+     * @return void
+     * @test
+     */
+    public function cannotViewAddRssFormIfNotAuthenticated()
+    {
+        $response = $this->get('/add-rss');
+
+        $response->assertRedirect('/login');
+    }
+
+    /**
+     * Add Rss Page (Authenticated)
+     *
+     * @return void
+     * @test
+     */
+    public function canViewAddRssFormIfAuthenticated()
+    {
+        $user = factory(User::class)->create([
+            'password' => bcrypt($password = 'rss-reader-lover'),
+        ]);
+
+        $response = $this->actingAs($user)->get('/add-rss');
+
+        $response->assertStatus(200);
+
+        $response->assertSee('Add a New RSS');
+    }
+    
+    /**
+     * Add Rss Form (Authenticated)
+     *
+     * @return void
+     * @test
+     */
+    public function canAddRssFormIfAuthenticated()
+    {
+        $user = factory(User::class)->create([
+            'password' => bcrypt($password = 'rss-reader-lover'),
+        ]);
+
+        $response = $this->actingAs($user)->post('/add-rss', []);
+
+        $response->assertStatus(200);
     }
 }
