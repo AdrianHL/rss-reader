@@ -53,6 +53,7 @@ class RssManagerController extends Controller
         $rss = Auth::user()->rss()->where('id', $rssId)->firstOrFail();
 
         //ToDo - This should live in a separate class (repository or service) that return a controller resource (e.g. a RSS View Object)
+        // and then the view/blades should not do "nasty" checks to show this data
         try {
             $rssContent = null;
             $content = file_get_contents($rss->url);
