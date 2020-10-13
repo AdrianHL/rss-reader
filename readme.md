@@ -11,8 +11,9 @@ This is an incomplete project and the following actions are in the ToDo list:
 
 - Paginate My RSS list.
 - Include some feature for finding a specific RSS.
+- Include a separate class (repository or service) to handle the RSS read and return a controller resource (e.g. a RSS View Object) to the RSS Viewer.
 - Evaluate Security, specially taking into account that this project is using Laravel 5.6 and other libraries (such as Bootstrap 3) which are out of maintenance and have different known issues.
-- 
+- Code tidy up, linter, prettier... 
 
 ## Security Vulnerabilities
 
