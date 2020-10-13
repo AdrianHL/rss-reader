@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddNewRssRequest;
+use App\Rss;
+use Illuminate\Support\Facades\Auth;
 
 class RssManagerController extends Controller
 {
@@ -13,7 +15,8 @@ class RssManagerController extends Controller
      */
     public function index()
     {
-        return view('rss-reader.home');
+        $rssList = Auth::user()->rss->all();
+        return view('rss-reader.home', compact(['rssList']));
     }
  
     /**

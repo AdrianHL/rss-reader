@@ -6,12 +6,17 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">My RSS Index</div>
-                <div class="card-body">
-                    RSS 1
-                </div>
-                <div class="card-body">
-                    RSS 2
-                </div>
+                @if(empty($rssList))
+                    <div class="card-body">
+                       No RSS Added Yet!
+                    </div>
+                @else
+                    @foreach($rssList as $rssItem)
+                    <div class="card-body">
+                        <a href="{{ $rssItem->url}}">{{ $rssItem->url }}</a>
+                    </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
