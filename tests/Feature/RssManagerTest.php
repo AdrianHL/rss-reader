@@ -91,7 +91,9 @@ class RssManagerTest extends TestCase
             'url' => $faker->url()
         ]);
 
-        $response->assertRedirect('/rss-manager');
+        $rss = Rss::orderBy('id', 'desc')->first();
+
+        $response->assertRedirect('/view-rss/' . $rss->id);
     }
 
     /**
@@ -144,9 +146,5 @@ class RssManagerTest extends TestCase
         $response = $this->actingAs($user)->get('/view-rss/' . $rss->id);
 
         $response->assertStatus(404);
-
-        $response = $this->actingAs($anotherUser)->get('/view-rss/' . $rss->id);
-
-        $response->assertStatus(200);
     }
 }

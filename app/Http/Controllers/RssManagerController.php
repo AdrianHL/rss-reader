@@ -40,7 +40,7 @@ class RssManagerController extends Controller
         $rss = $request->persist();
 
         //ToDo - Redirect to the view page once available
-        return redirect()->route('rss-manager-home');
+        return redirect()->route('view-rss', ['rssId' => $rss->id]);
     }
 
     /**
