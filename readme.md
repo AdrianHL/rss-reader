@@ -9,6 +9,9 @@ This is a RSS Reader based on Laravel 5.6 offering the following features:
 
 This is an incomplete project and the following actions are in the ToDo list:
 
+- Paginate My RSS list.
+- Include some feature for finding a specific RSS.
+- Evaluate Security, specially taking into account that this project is using Laravel 5.6 and other libraries (such as Bootstrap 3) which are out of maintenance and have different known issues.
 - 
 
 ## Security Vulnerabilities
