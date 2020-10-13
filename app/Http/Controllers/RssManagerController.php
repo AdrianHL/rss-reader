@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\AddNewRssRequest;
 
 class RssManagerController extends Controller
 {
@@ -24,5 +24,18 @@ class RssManagerController extends Controller
     public function add()
     {
         return view('rss-reader.add-rss');
+    }
+     
+    /**
+     * Add a RSS.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function post(AddNewRssRequest $request)
+    {
+        $rss = $request->persist();
+
+        //ToDo - Redirect to the view page once available
+        return redirect()->route('rss-manager-home');
     }
 }

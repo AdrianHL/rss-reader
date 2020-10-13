@@ -84,7 +84,11 @@ class RssManagerTest extends TestCase
             'password' => bcrypt($password = 'rss-reader-lover'),
         ]);
 
-        $response = $this->actingAs($user)->post('/add-rss', []);
+        $faker = \Faker\Factory::create();
+        
+        $response = $this->actingAs($user)->post('/add-rss', [
+            'url' => $faker->url()
+        ]);
 
         $response->assertStatus(200);
     }
