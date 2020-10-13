@@ -13,7 +13,7 @@
                 @else
                     @foreach($rssList as $rssItem)
                     <div class="card-body">
-                        <a href="{{ $rssItem->url}}">{{ $rssItem->url }}</a>
+                        <a href="{{ route('view-rss', ['rssId' => $rssItem->id]) }}">{{ $rssItem->url }}</a>
                     </div>
                     @endforeach
                 @endif

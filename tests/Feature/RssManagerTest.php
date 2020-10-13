@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Rss;
 use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -91,5 +92,61 @@ class RssManagerTest extends TestCase
         ]);
 
         $response->assertRedirect('/rss-manager');
+    }
+
+    /**
+     * View Rss (Authenticated)
+     *
+     * @return void
+     * @test
+     */
+    public function canViewARssIfAuthenticated()
+    {
+        $user = factory(User::class)->create([
+            'password' => bcrypt($password = 'rss-reader-lover'),
+        ]);
+
+        $rss = factory(Rss::class)->create([
+            'user_id' => $user->id
+        ]);
+
+        $faker = \Faker\Factory::create();
+        
+        $response = $this->actingAs($user)->get('/view-rss/' . $rss->id);
+
+        $response->assertStatus(200);
+
+        //ToDo - Improve this test to verify content, or at least to verify blade used
+    }
+
+        /**
+     * View Rss (Authenticated)
+     *
+     * @return void
+     * @test
+     */
+    public function cannotViewARssIfNotAvailableToAuthenticatedUser()
+    {
+        $user = factory(User::class)->create([
+            'password' => bcrypt($password = 'rss-reader-lover'),
+        ]);
+
+        $anotherUser = factory(User::class)->create([
+            'password' => bcrypt($password = 'rss-reader-lover'),
+        ]);
+
+        $rss = factory(Rss::class)->create([
+            'user_id' => $anotherUser->id
+        ]);
+
+        $faker = \Faker\Factory::create();
+        
+        $response = $this->actingAs($user)->get('/view-rss/' . $rss->id);
+
+        $response->assertStatus(404);
+
+        $response = $this->actingAs($anotherUser)->get('/view-rss/' . $rss->id);
+
+        $response->assertStatus(200);
     }
 }
