@@ -10,7 +10,13 @@ This is a RSS Reader based on Laravel 5.6 offering the following features:
 Clone Repository
 
 ```
-git clone AdrianHL/rss-reader
+git clone https://github.com/AdrianHL/rss-reader.git
+```
+
+Access Project path
+
+```
+cd rss-reader
 ```
 
 Install Dependencies
@@ -19,7 +25,13 @@ Install Dependencies
 composer install
 ```
 
-Create a sqlite file for storing the database (other driver requires additional set up); by default it has to be create in the following relative path `database\database.sqlite`.
+Copy `.env` file
+
+```
+cp .env.example .env
+```
+
+Create a sqlite (empty) file for storing the database (other driver requires additional set up); by default it has to be create in the following relative path `database\database.sqlite`.
 
 Then run migrations
 
@@ -42,6 +54,8 @@ Laravel development server started: <http://127.0.0.1:8000>
 
 Then Navigate to that URL, register as a user and start playing.
 
+Please note there is an existing issue with the redirect after register which leads to a 404 page (http://127.0.0.1:8000/home); please visit http://127.0.0.1:8000/ manually if that happens.
+
 ## Tests
 
 Run the following command in order to run the tests 
@@ -54,6 +68,7 @@ vendor/bin/phpunit
 
 This is an incomplete project and the following actions are in the ToDo list:
 
+- Fix the after registration bug.
 - Paginate My RSS list.
 - Include some feature for finding a specific RSS.
 - Include a separate class (repository or service) to handle the RSS read and return a controller resource (e.g. a RSS View Object) to the RSS Viewer.
