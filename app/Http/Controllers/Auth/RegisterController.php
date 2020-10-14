@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/rss-manager';
 
     /**
      * Create a new controller instance.
@@ -68,5 +68,14 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function register(Request $request)
+    {
+        $user = $this->create($request->validated());
+
+        Auth::login($user);
+
+        return redirect(route($this->redirectTo));
     }
 }
