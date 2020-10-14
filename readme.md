@@ -7,7 +7,19 @@ This is a RSS Reader based on Laravel 5.6 offering the following features:
 
 ## Install
 
-Please follow [Laravel 5.6 Installation Guide](https://laravel.com/docs/5.6/installation).
+Clone Repository
+
+```
+git clone AdrianHL/rss-reader
+```
+
+Install Dependencies
+
+```
+composer install
+```
+
+Create a sqlite file for storing the database (other driver requires additional set up); by default it has to be create in the following relative path `database\database.sqlite`.
 
 Then run migrations
 
