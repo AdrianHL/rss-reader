@@ -1,7 +1,7 @@
 {
     "name": "AdrianHL/rss-reader",
     "description": "RSS Reader based on Laravel 5.6.",
-    "keywords": ["framework", "laravel"],
+    "keywords": ["laravel", "rss", "reader"],
     "license": "MIT",
     "type": "project",
     "require": {
