@@ -61,7 +61,7 @@ Please note there is an existing issue with the redirect after register which le
 Run the following command in order to run the tests 
 
 ```
-vendor/bin/phpunit
+php artisan test
 ```
 
 ## ToDos
